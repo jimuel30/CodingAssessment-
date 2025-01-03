@@ -162,8 +162,6 @@ public class DroneServiceImpl implements DroneService {
         if(drone.getWeightLimit()>1000){
             errrorList.add("WEIGHT LIMIT IS TOO MUCH");
         }
-
-
         return errrorList;
     }
 

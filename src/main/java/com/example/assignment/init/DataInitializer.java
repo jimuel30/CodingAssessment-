@@ -33,7 +33,6 @@ public class DataInitializer implements CommandLineRunner {
             LOG.info("DRONE: {}",drone);
             droneRepo.save(drone);
         }
-
     }
 
 
