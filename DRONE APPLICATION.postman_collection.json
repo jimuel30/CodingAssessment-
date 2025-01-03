@@ -1,0 +1,177 @@
+{
+	"info": {
+		"_postman_id": "7a475e00-57b2-4d6f-9d82-8c8594d6beae",
+		"name": "DRONE APPLICATION",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "40774386"
+	},
+	"item": [
+		{
+			"name": "GET DRONE AVAILABILITY",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/drone/availability/69f4feb80fb74cf79550462a60dad2fb",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"drone",
+						"availability",
+						"69f4feb80fb74cf79550462a60dad2fb"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "REGISTER DRONE",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \r\n  \"model\": \"Lightweight\",\r\n  \"weightLimit\": 11,\r\n  \"state\": \"IDLE\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/drone",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"drone"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET DRONE MEDICATION",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/drone/medication/279db035ec9142cda22122205512807e",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"drone",
+						"medication",
+						"279db035ec9142cda22122205512807e"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LOAD MEDICATION",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Aspirin\",\r\n  \"weight\": 0.5,\r\n  \"code\": \"ASP1234\",\r\n  \"image\": \"http://example.com/images/aspirin.jpg\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/drone/load/184bdd974b4e45f9bd84e780cf3b72de",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"drone",
+						"load",
+						"184bdd974b4e45f9bd84e780cf3b72de"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET DRONE INFORMATION",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/drone/info/<drone-serial-id>",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"drone",
+						"info",
+						"<drone-serial-id>"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

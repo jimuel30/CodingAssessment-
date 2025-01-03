@@ -7,7 +7,7 @@ This is a Spring Boot application. This README provides the steps to clone, buil
 Before you begin, ensure you have the following installed on your system:
 
 - [Git](https://git-scm.com/)
-- [Java 8+](https://adoptopenjdk.net/)
+- [Java 17+](https://adoptopenjdk.net/)
 - [Maven](https://maven.apache.org/)
 
 ## Clone the repository
@@ -16,16 +16,28 @@ First, clone the repository to your local machine using Git. Open your terminal 
 
 git clone https://github.com/jimuel30/CodingAssessment-.git
 
-Build the Application
+## Build the Application
 Once you have cloned the repository, navigate to the project folder and build the application.
 
 Run the following Maven command in your terminal:
 
 mvn clean install
+
 This will clean the project, download the necessary dependencies, and package the application into a JAR file.
 
 
-Run the Application
+## Run the Application
 After building the project, you can run the application:
 
 mvn spring-boot:run
+
+
+## TESTING
+
+You can see a postman collection within this directory named "DRONE APPLICATION.postman_collection.json"
+Import it on postman
+
+On the request with <drone-serial-id> on its url you must replace this with an actual value either from the response
+from registering a drone or you can check the logs this application creates 10 drones upon starting and you can copy
+the serial id from there, failing to do either of this step may result to NOT FOUND response
+
