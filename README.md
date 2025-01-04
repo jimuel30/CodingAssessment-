@@ -10,11 +10,14 @@ Before you begin, ensure you have the following installed on your system:
 - [Java 17+](https://adoptopenjdk.net/)
 - [Maven](https://maven.apache.org/)
 
-## Clone the repository
+## Clone the repository 
+
+If you received this project on a  zip file skip this step
 
 First, clone the repository to your local machine using Git. Open your terminal and run the following command:
 
 git clone https://github.com/jimuel30/CodingAssessment-.git
+
 
 
 
