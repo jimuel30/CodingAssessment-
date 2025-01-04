@@ -73,6 +73,7 @@ public class DroneServiceImpl implements DroneService {
             response = processTransport(medication,serialId);
         }
         else{
+            LOG.info("INVALID PARAMETERS: {}",errorList);
             response = ResponseEntity.badRequest().body(new Error(errorList));
         }
         return response;
@@ -81,18 +82,21 @@ public class DroneServiceImpl implements DroneService {
     @Override
     public ResponseEntity<?> getInfo(String serialId) {
         final Optional<Drone> optionalDrone = droneRepo.findBySerialNumber(serialId);
-        return optionalDrone.isEmpty()? ResponseEntity.status(HttpStatus.NOT_FOUND).body(new Error("DRONE NOT FOUD"))
+        return optionalDrone.isEmpty()? ResponseEntity.status(HttpStatus.NOT_FOUND).body(new Error("DRONE NOT FOUND"))
                 : ResponseEntity.ok().body(new Battery(optionalDrone.get().getBattery()));
     }
 
     @Override
     public ResponseEntity<?> getMedication(String serialId) {
         final Optional<Drone> optionalDrone = droneRepo.findBySerialNumber(serialId);
+        LOG.info("OPTIONAL DRONE: {}",optionalDrone);
         ResponseEntity<?> response;
         if(optionalDrone.isEmpty()){
+            LOG.info("DRONE NOT FOUND SERIAL ID: {}",serialId);
             response = ResponseEntity.status(HttpStatus.NOT_FOUND).body(new Error("DRONE NOT FOUND"));
         }
         else{
+            LOG.info("DRONE FOUND SERIAL ID: {}",serialId);
             final Drone existingDrone = optionalDrone.get();
             final Object body = Objects.nonNull(existingDrone.getMedication())?existingDrone.getMedication()
                     : new Error("No Medication");
@@ -112,7 +116,8 @@ public class DroneServiceImpl implements DroneService {
     private ResponseEntity<?> processTransport(Medication medication, String serialId){
         ResponseEntity<?> response;
 
-        final Optional<Drone> optionalDrone = droneRepo.findById(serialId);
+        final Optional<Drone> optionalDrone = droneRepo.findBySerialNumber(serialId);
+        LOG.info("Optional Drone: {}",optionalDrone);
         if(optionalDrone.isEmpty()){
             response = ResponseEntity.status(HttpStatus.NOT_FOUND).body(new Error("DRONE NOT FOUND"));
         }
@@ -120,12 +125,15 @@ public class DroneServiceImpl implements DroneService {
             final Drone existingDrone = optionalDrone.get();
             final List<String> errorList = checkDroneAvailability(existingDrone,medication);
 
+
             if(errorList.isEmpty()){
                 medication = medicationRepo.save(medication);
+                LOG.info("Medication Saved!!");
                 triggerScheduler(existingDrone,medication);
                 response = ResponseEntity.ok().body(medication);
             }
             else{
+                LOG.info("DRONE UNAVAILABILITY REASONS: {}",errorList);
                response = ResponseEntity.badRequest().body(new Error(errorList));
             }
         }
@@ -167,21 +175,19 @@ public class DroneServiceImpl implements DroneService {
 
     private List<String> validateMedication(final Medication medication){
         final List<String> errrorList = new ArrayList<>();
-        if(Objects.isNull(medication.getName()) || "".equals(medication.getName())){
-            errrorList.add("Medication Name Empty");
+        if(Objects.isNull(medication.getName()) || "".equals(medication.getName()) || !StringUtil.isValidName(medication.getName())){
+            errrorList.add("Invalid Name Medication Name");
         }
         if(medication.getWeight()<=0){
             errrorList.add("Medication Weight Invalid");
         }
 
-        final String name = medication.getName();
+
         final String code = medication.getCode();
-        if(Objects.isNull(name) || name.isEmpty() || !StringUtil.isValidName(name)){
-            errrorList.add("Invalid Name");
-        }
+
 
         if(Objects.isNull(code) || code.isEmpty() || !StringUtil.isValidCode(code)){
-            errrorList.add("Invalid Code");
+            errrorList.add("Invalid Medication Code");
         }
 
         return errrorList;
