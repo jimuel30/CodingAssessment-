@@ -48,6 +48,7 @@ public class DataInitializer implements CommandLineRunner {
             drone.setModel(Model.Lightweight);
             droneList.add(drone);
         }
+        droneList.get(9).setBattery(10);
       return droneList;
     }
 

@@ -24,7 +24,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/api/v1/drone/availability/69f4feb80fb74cf79550462a60dad2fb",
+					"raw": "http://localhost:8080/api/v1/drone/availability/<drone-serial-id>",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -35,7 +35,7 @@
 						"v1",
 						"drone",
 						"availability",
-						"69f4feb80fb74cf79550462a60dad2fb"
+						"<drone-serial-id>"
 					]
 				}
 			},
@@ -89,7 +89,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/api/v1/drone/medication/279db035ec9142cda22122205512807e",
+					"raw": "http://localhost:8080/api/v1/drone/medication/<drone-serial-id>",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -100,7 +100,7 @@
 						"v1",
 						"drone",
 						"medication",
-						"279db035ec9142cda22122205512807e"
+						"<drone-serial-id>"
 					]
 				}
 			},
@@ -121,7 +121,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/api/v1/drone/load/184bdd974b4e45f9bd84e780cf3b72de",
+					"raw": "http://localhost:8080/api/v1/drone/load/<drone-serial-id>",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -132,7 +132,7 @@
 						"v1",
 						"drone",
 						"load",
-						"184bdd974b4e45f9bd84e780cf3b72de"
+						"<drone-serial-id>"
 					]
 				}
 			},
