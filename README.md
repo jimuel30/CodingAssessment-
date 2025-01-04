@@ -6,9 +6,9 @@ This is a Spring Boot application. This README provides the steps to clone, buil
 
 Before you begin, ensure you have the following installed on your system:
 
-- [Git](https://git-scm.com/)
-- [Java 17+](https://adoptopenjdk.net/)
-- [Maven](https://maven.apache.org/)
+- [Git]
+- [Java 17+]
+- [Maven]
 
 ## Clone the repository 
 
